@@ -1,18 +1,19 @@
 package br.com.maktaba.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class TestController {
 
     @GetMapping("/")
-    public String home() {
-        return "🚀 Maktaba API rodando! localhost:9090";
-    }
+    public String home() { return "home"; }
 
     @GetMapping("/ping")
     public String ping() {
         return "OK";
     }
+
 }
+

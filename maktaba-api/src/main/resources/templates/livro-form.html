@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Livro - Maktaba</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background: #f4f4f4; }
+        .card { background: white; padding: 30px; border-radius: 8px; width: 400px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Adicionar Livro</h2>
+    <form action="/livros/admin/salvar" method="post">
+        <input type="text" name="titulo" placeholder="Título" required/>
+        <input type="text" name="autor" placeholder="Autor" required/>
+        <input type="text" name="genero" placeholder="Gênero" required/>
+        <input type="text" name="imagemUrl" placeholder="URL da Capa"/>
+        <textarea name="descricao" placeholder="Descrição" style="width:100%; padding:8px; margin:8px 0; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"></textarea>
+        <button type="submit">Salvar</button>
+    </form>
+</div>
+</body>
+</html>>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Planos - Maktaba</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #f4f4f4; }
+        nav { background: #1a1a2e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        nav h1 { color: white; font-size: 22px; }
+        nav a { color: #ccc; text-decoration: none; margin-left: 20px; }
+        h2 { text-align: center; padding: 40px 0 20px; color: #333; }
+        .planos { display: flex; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap; }
+        .plano { background: white; border-radius: 12px; padding: 30px; width: 250px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .plano.destaque { border: 2px solid #007bff; }
+        .plano h3 { font-size: 22px; margin-bottom: 10px; }
+        .plano .preco { font-size: 36px; font-weight: bold; color: #007bff; margin: 15px 0; }
+        .plano ul { list-style: none; margin-bottom: 20px; }
+        .plano ul li { padding: 6px 0; font-size: 14px; color: #555; border-bottom: 1px solid #eee; }
+        .btn { display: block; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; text-decoration: none; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+<nav>
+    <h1>📚 Maktaba</h1>
+    <div>
+        <a href="/">Home</a>
+        <a href="/livros/catalogo">Catálogo</a>
+        <a href="/perfil">Meu Perfil</a>
+    </div>
+</nav>
+
+<h2>Escolha seu Plano</h2>
+
+<div class="planos">
+    <div class="plano">
+        <h3>📗 Básico</h3>
+        <div class="preco">R$19,90</div>
+        <ul>
+            <li>1 livro por mês</li>
+            <li>Acesso ao catálogo</li>
+            <li>Suporte por e-mail</li>
+        </ul>
+        <form action="/assinatura/assinar" method="post">
+            <input type="hidden" name="plano" value="BASICO"/>
+            <button class="btn">Assinar</button>
+        </form>
+    </div>
+
+    <div class="plano destaque">
+        <h3>📘 Standard</h3>
+        <div class="preco">R$34,90</div>
+        <ul>
+            <li>2 livros por mês</li>
+            <li>Acesso ao catálogo</li>
+            <li>Suporte prioritário</li>
+        </ul>
+        <form action="/assinatura/assinar" method="post">
+            <input type="hidden" name="plano" value="STANDARD"/>
+            <button class="btn">Assinar</button>
+        </form>
+    </div>
+
+    <div class="plano">
+        <h3>📕 Premium</h3>
+        <div class="preco">R$49,90</div>
+        <ul>
+            <li>4 livros por mês</li>
+            <li>Acesso ao catálogo</li>
+            <li>Suporte 24/7</li>
+        </ul>
+        <form action="/assinatura/assinar" method="post">
+            <input type="hidden" name="plano" value="PREMIUM"/>
+            <button class="btn">Assinar</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

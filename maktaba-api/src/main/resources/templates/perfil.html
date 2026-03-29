@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Perfil - Maktaba</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #f4f4f4; }
+        nav { background: #1a1a2e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        nav h1 { color: white; }
+        nav a { color: #ccc; text-decoration: none; margin-left: 20px; }
+        .container { max-width: 600px; margin: 40px auto; }
+        .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .card h2 { margin-bottom: 20px; color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+        .info-row span:first-child { color: #888; font-size: 14px; }
+        .info-row span:last-child { font-weight: bold; color: #333; }
+        .status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 13px; }
+        .ATIVA { background: #d4edda; color: #155724; }
+        .PAUSADA { background: #fff3cd; color: #856404; }
+        .CANCELADA { background: #f8d7da; color: #721c24; }
+        .btn { display: inline-block; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 14px; margin-right: 10px; margin-top: 15px; }
+        .btn-blue { background: #007bff; color: white; }
+        .btn-red { background: #dc3545; color: white; border: none; cursor: pointer; }
+        .avatar { width: 80px; height: 80px; border-radius: 50%; background: #007bff; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; margin: 0 auto 20px; }
+    </style>
+</head>
+<body>
+<nav>
+    <h1>📚 Maktaba</h1>
+    <div>
+        <a href="/">Home</a>
+        <a href="/livros/catalogo">Catálogo</a>
+        <a href="/assinatura/planos">Planos</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <div class="avatar">👤</div>
+        <h2>Meus Dados</h2>
+        <div class="info-row">
+            <span>Nome</span>
+            <span th:text="${usuario.nome}"></span>
+        </div>
+        <div class="info-row">
+            <span>Username</span>
+            <span th:text="${usuario.username}"></span>
+        </div>
+        <div class="info-row">
+            <span>Email</span>
+            <span th:text="${usuario.email}"></span>
+        </div>
+        <div class="info-row">
+            <span>Idade</span>
+            <span th:text="${usuario.idade}"></span>
+        </div>
+        <div class="info-row">
+            <span>Interesses</span>
+            <span th:text="${usuario.interessesLiterarios ?: 'Não informado'}"></span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Minha Assinatura</h2>
+        <div th:if="${assinatura}">
+            <div class="info-row">
+                <span>Plano</span>
+                <span th:text="${assinatura.plano}"></span>
+            </div>
+            <div class="info-row">
+                <span>Status</span>
+                <span class="status" th:classappend="${assinatura.status}" th:text="${assinatura.status}"></span>
+            </div>
+            <div class="info-row">
+                <span>Renovação</span>
+                <span th:text="${assinatura.dataRenovacao}"></span>
+            </div>
+            <a href="/assinatura/planos" class="btn btn-blue">Trocar Plano</a>
+        </div>
+        <div th:unless="${assinatura}">
+            <p style="color:#888; margin-bottom:15px;">Você não possui assinatura ativa.</p>
+            <a href="/assinatura/planos" class="btn btn-blue">Ver Planos</a>
+        </div>
+    </div>
+
+    <div style="text-align:center; padding: 10px;">
+        <form action="/logout" method="post">
+            <button class="btn btn-red">Sair da conta</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>>

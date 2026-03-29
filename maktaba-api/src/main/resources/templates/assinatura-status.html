@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Assinatura - Maktaba</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #f4f4f4; }
+        nav { background: #1a1a2e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        nav h1 { color: white; } nav a { color: #ccc; text-decoration: none; margin-left: 20px; }
+        .container { max-width: 500px; margin: 60px auto; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; }
+        .status { display: inline-block; padding: 6px 16px; border-radius: 20px; font-weight: bold; margin: 10px 0 20px; }
+        .ATIVA { background: #d4edda; color: #155724; }
+        .PAUSADA { background: #fff3cd; color: #856404; }
+        .CANCELADA { background: #f8d7da; color: #721c24; }
+        .info { margin: 10px 0; color: #555; }
+        .btn { display: inline-block; margin-top: 20px; padding: 10px 24px; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .btn-planos { display: inline-block; margin-top: 20px; padding: 10px 24px; background: #007bff; color: white; border-radius: 6px; text-decoration: none; font-size: 14px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+<nav>
+    <h1>📚 Maktaba</h1>
+    <div><a href="/">Home</a><a href="/livros/catalogo">Catálogo</a></div>
+</nav>
+
+<div class="container">
+    <div th:if="${assinatura}">
+        <h2>Minha Assinatura</h2>
+        <span class="status" th:classappend="${assinatura.status}" th:text="${assinatura.status}"></span>
+        <p class="info">📦 Plano: <strong th:text="${assinatura.plano}"></strong></p>
+        <p class="info">📅 Início: <strong th:text="${assinatura.dataInicio}"></strong></p>
+        <p class="info">🔄 Renovação: <strong th:text="${assinatura.dataRenovacao}"></strong></p>
+        <br>
+        <a href="/assinatura/planos" class="btn-planos">Trocar Plano</a>
+        <form action="/assinatura/cancelar" method="post" style="display:inline">
+            <button class="btn">Cancelar Assinatura</button>
+        </form>
+    </div>
+    <div th:unless="${assinatura}">
+        <h2>Você não tem assinatura ativa</h2>
+        <a href="/assinatura/planos" class="btn-planos">Ver Planos</a>
+    </div>
+</div>
+</body>
+</html>

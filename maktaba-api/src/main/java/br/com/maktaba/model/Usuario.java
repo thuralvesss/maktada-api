@@ -1,33 +1,43 @@
-package br.com.maktaba.model;  //
+package br.com.maktaba.model;
 
-import jakarta.persistence.*;   //  2. IMPORT JPA (banco)
-import lombok.Data;             //  3. IMPORT LOMBOK (getters grátis)
-import lombok.NoArgsConstructor; //  4. Construtor vazio
-import lombok.AllArgsConstructor;// 5. Construtor completo
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity                    //  6. JPA: "isso é tabela no banco"
-@Table(name = "usuarios")  //  7. Nome da tabela = "usuarios"
-@Data                      //  8. LOMBOK: cria get/set/toString
-@NoArgsConstructor        //  9. Construtor vazio (JPA precisa)
-@AllArgsConstructor       // 10. Construtor com todos campos
-public class Usuario {     //  11. NOME CLASSE = nome tabela Java
+@Entity
+@Table(name = "usuarios")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Usuario {
 
-    @Id                           //  12. "Este é ID principal"
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  //  13. ID auto++ (1,2,3...)
-    private Long id;              //  14. Campo ID (bigint)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String nome;          // 15. Campo nome (varchar)
-
-    @Column(unique = true)        //  16. "Email ÚNICO no banco"
-    private String email;         //  17. Campo email (varchar UNIQUE)
+    private String nome;
 
     @Column(unique = true)
-    private String username;      //  18. Username ÚNICO
+    private String email;
 
-    private String senhaHash;     //  19. Senha (depois criptografamos)
+    @Column(unique = true)
+    private String username;
 
-    private Integer idade;        // 20. Idade (int)
+    private String senhaHash;
 
-    @Column(columnDefinition = "TEXT")  //  21. Campo LONGO texto
-    private String interessesLiterarios; //  22. RF01 documento
+    private Integer idade;
+
+    @Column(columnDefinition = "TEXT")
+    private String interessesLiterarios;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuario_roles",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
 }
