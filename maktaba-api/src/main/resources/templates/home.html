@@ -3,64 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Maktaba - Home</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: sans-serif; background: #f4f4f4; }
-        nav { background: #1a1a2e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        nav h1 { color: white; font-size: 22px; }
-        nav a { color: #ccc; text-decoration: none; margin-left: 20px; }
-        nav a:hover { color: white; }
-        .hero { background: #16213e; color: white; padding: 60px 30px; text-align: center; }
-        .hero h2 { font-size: 36px; margin-bottom: 10px; }
-        .hero p { font-size: 16px; color: #aaa; margin-bottom: 30px; }
-        .btn { padding: 12px 24px; background: #007bff; color: white; border-radius: 6px; text-decoration: none; font-size: 16px; }
-        .cards { display: flex; justify-content: center; gap: 20px; padding: 40px 30px; flex-wrap: wrap; }
-        .card { background: white; border-radius: 8px; padding: 25px; width: 220px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .card h3 { margin-bottom: 10px; }
-        .card p { font-size: 13px; color: #666; margin-bottom: 15px; }
-        .card a { padding: 8px 16px; background: #007bff; color: white; border-radius: 4px; text-decoration: none; font-size: 13px; }
-        .logout { text-align: center; padding: 20px; }
-        .logout a { color: red; text-decoration: none; }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
 </head>
 <body>
-<nav>
-    <h1>📚 Maktaba</h1>
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold">📚 Maktaba</a>
     <div>
-        <a href="/livros/catalogo">Catálogo</a>
-        <a href="/assinatura/planos">Assinar</a>
-        <a href="/perfil">Meu Perfil</a>
+        <a href="/livros/catalogo" class="btn btn-outline-light btn-sm me-2">Catálogo</a>
+        <a href="/assinatura/planos" class="btn btn-outline-light btn-sm me-2">Assinar</a>
+        <a href="/perfil" class="btn btn-outline-light btn-sm me-2">Meu Perfil</a>
+        <form action="/logout" method="post" class="d-inline">
+            <button class="btn btn-danger btn-sm">Sair</button>
+        </form>
     </div>
 </nav>
 
-<div class="hero">
-    <h2>Bem-vindo ao Maktaba! 📖</h2>
-    <p>Sua plataforma de assinatura de livros mensais</p>
-    <a href="/livros/catalogo" class="btn">Ver Catálogo</a>
+<div class="bg-dark text-white text-center py-5">
+    <h1 class="display-5 fw-bold">Bem-vindo ao Maktaba! 📖</h1>
+    <p class="lead text-secondary">Sua plataforma de assinatura de livros mensais</p>
+    <a href="/livros/catalogo" class="btn btn-primary btn-lg">Ver Catálogo</a>
 </div>
 
-<div class="cards">
-    <div class="card">
-        <h3>📚 Catálogo</h3>
-        <p>Explore nossos livros disponíveis</p>
-        <a href="/livros/catalogo">Acessar</a>
-    </div>
-    <div class="card">
-        <h3>📋 Assinatura</h3>
-        <p>Escolha seu plano de leitura</p>
-        <a href="/assinatura/planos">Ver Planos</a>
-    </div>
-    <div class="card">
-        <h3>👤 Perfil</h3>
-        <p>Gerencie seus dados</p>
-        <a href="/perfil">Acessar</a>
+<div class="container py-5">
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-3">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h3>📚</h3>
+                    <h5 class="card-title">Catálogo</h5>
+                    <p class="card-text text-muted">Explore nossos livros disponíveis</p>
+                    <a href="/livros/catalogo" class="btn btn-primary btn-sm">Acessar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h3>📋</h3>
+                    <h5 class="card-title">Assinatura</h5>
+                    <p class="card-text text-muted">Escolha seu plano de leitura</p>
+                    <a href="/assinatura/planos" class="btn btn-primary btn-sm">Ver Planos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow h-100">
+                <div class="card-body">
+                    <h3>👤</h3>
+                    <h5 class="card-title">Perfil</h5>
+                    <p class="card-text text-muted">Gerencie seus dados</p>
+                    <a href="/perfil" class="btn btn-primary btn-sm">Acessar</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="logout">
-    <form action="/logout" method="post">
-        <button type="submit" style="background:none; border:none; color:red; cursor:pointer; font-size:14px;">Sair</button>
-    </form>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

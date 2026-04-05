@@ -25,12 +25,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/cadastro")
-    public String exibirCadastro() { return "cadastro"; }
+    public String exibirCadastro() {
+        return "cadastro";
+    }
 
     @GetMapping("/login")
     public String exibirLogin() { return "login"; }
 
-    @PostMapping("/registrar")
+    @PostMapping("/cadastro")
     public String registrar(Usuario usuario) {
         // Criptografa a senha
         usuario.setSenhaHash(passwordEncoder.encode(usuario.getSenhaHash()));

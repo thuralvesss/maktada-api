@@ -3,78 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Planos - Maktaba</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: sans-serif; background: #f4f4f4; }
-        nav { background: #1a1a2e; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
-        nav h1 { color: white; font-size: 22px; }
-        nav a { color: #ccc; text-decoration: none; margin-left: 20px; }
-        h2 { text-align: center; padding: 40px 0 20px; color: #333; }
-        .planos { display: flex; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap; }
-        .plano { background: white; border-radius: 12px; padding: 30px; width: 250px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .plano.destaque { border: 2px solid #007bff; }
-        .plano h3 { font-size: 22px; margin-bottom: 10px; }
-        .plano .preco { font-size: 36px; font-weight: bold; color: #007bff; margin: 15px 0; }
-        .plano ul { list-style: none; margin-bottom: 20px; }
-        .plano ul li { padding: 6px 0; font-size: 14px; color: #555; border-bottom: 1px solid #eee; }
-        .btn { display: block; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; text-decoration: none; }
-        .btn:hover { background: #0056b3; }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
 </head>
-<body>
-<nav>
-    <h1>📚 Maktaba</h1>
+<body class="bg-light">
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold">📚 Maktaba</a>
     <div>
-        <a href="/">Home</a>
-        <a href="/livros/catalogo">Catálogo</a>
-        <a href="/perfil">Meu Perfil</a>
+        <a href="/" class="btn btn-outline-light btn-sm me-2">Home</a>
+        <a href="/livros/catalogo" class="btn btn-outline-light btn-sm me-2">Catálogo</a>
+        <a href="/perfil" class="btn btn-outline-light btn-sm">Meu Perfil</a>
     </div>
 </nav>
 
-<h2>Escolha seu Plano</h2>
+<div class="container py-5">
+    <h2 class="text-center mb-5">Escolha seu Plano</h2>
 
-<div class="planos">
-    <div class="plano">
-        <h3>📗 Básico</h3>
-        <div class="preco">R$19,90</div>
-        <ul>
-            <li>1 livro por mês</li>
-            <li>Acesso ao catálogo</li>
-            <li>Suporte por e-mail</li>
-        </ul>
-        <form action="/assinatura/assinar" method="post">
-            <input type="hidden" name="plano" value="BASICO"/>
-            <button class="btn">Assinar</button>
-        </form>
-    </div>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-3">
+            <div class="card shadow text-center h-100">
+                <div class="card-body">
+                    <h3>📗</h3>
+                    <h4 class="card-title">Básico</h4>
+                    <h2 class="text-primary my-3">R$19,90</h2>
+                    <ul class="list-unstyled text-muted mb-4">
+                        <li class="py-1 border-bottom">1 livro por mês</li>
+                        <li class="py-1 border-bottom">Acesso ao catálogo</li>
+                        <li class="py-1">Suporte por e-mail</li>
+                    </ul>
+                    <form action="/assinatura/assinar" method="post">
+                        <input type="hidden" name="plano" value="BASICO"/>
+                        <button class="btn btn-primary w-100">Assinar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-    <div class="plano destaque">
-        <h3>📘 Standard</h3>
-        <div class="preco">R$34,90</div>
-        <ul>
-            <li>2 livros por mês</li>
-            <li>Acesso ao catálogo</li>
-            <li>Suporte prioritário</li>
-        </ul>
-        <form action="/assinatura/assinar" method="post">
-            <input type="hidden" name="plano" value="STANDARD"/>
-            <button class="btn">Assinar</button>
-        </form>
-    </div>
+        <div class="col-md-3">
+            <div class="card shadow text-center h-100 border-primary">
+                <div class="card-header bg-primary text-white">Mais Popular</div>
+                <div class="card-body">
+                    <h3>📘</h3>
+                    <h4 class="card-title">Standard</h4>
+                    <h2 class="text-primary my-3">R$34,90</h2>
+                    <ul class="list-unstyled text-muted mb-4">
+                        <li class="py-1 border-bottom">2 livros por mês</li>
+                        <li class="py-1 border-bottom">Acesso ao catálogo</li>
+                        <li class="py-1">Suporte prioritário</li>
+                    </ul>
+                    <form action="/assinatura/assinar" method="post">
+                        <input type="hidden" name="plano" value="STANDARD"/>
+                        <button class="btn btn-primary w-100">Assinar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-    <div class="plano">
-        <h3>📕 Premium</h3>
-        <div class="preco">R$49,90</div>
-        <ul>
-            <li>4 livros por mês</li>
-            <li>Acesso ao catálogo</li>
-            <li>Suporte 24/7</li>
-        </ul>
-        <form action="/assinatura/assinar" method="post">
-            <input type="hidden" name="plano" value="PREMIUM"/>
-            <button class="btn">Assinar</button>
-        </form>
+        <div class="col-md-3">
+            <div class="card shadow text-center h-100">
+                <div class="card-body">
+                    <h3>📕</h3>
+                    <h4 class="card-title">Premium</h4>
+                    <h2 class="text-primary my-3">R$49,90</h2>
+                    <ul class="list-unstyled text-muted mb-4">
+                        <li class="py-1 border-bottom">4 livros por mês</li>
+                        <li class="py-1 border-bottom">Acesso ao catálogo</li>
+                        <li class="py-1">Suporte 24/7</li>
+                    </ul>
+                    <form action="/assinatura/assinar" method="post">
+                        <input type="hidden" name="plano" value="PREMIUM"/>
+                        <button class="btn btn-primary w-100">Assinar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

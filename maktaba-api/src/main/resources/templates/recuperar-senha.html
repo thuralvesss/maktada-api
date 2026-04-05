@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperar Senha - Maktaba</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: white; padding: 40px; border-radius: 12px; width: 400px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h2 { margin-bottom: 10px; color: #1a1a2e; }
+        p { color: #666; margin-bottom: 20px; font-size: 14px; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+        button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        .sucesso { background: #d4edda; color: #155724; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
+        .erro { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
+        .voltar { display: block; text-align: center; margin-top: 15px; color: #007bff; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>🔑 Recuperar Senha</h2>
+    <p>Digite seu e-mail cadastrado e enviaremos um link para redefinir sua senha.</p>
+
+    <div th:if="${sucesso}" class="sucesso" th:text="${sucesso}"></div>
+    <div th:if="${erro}" class="erro" th:text="${erro}"></div>
+
+    <form action="/recuperar-senha/solicitar" method="post">
+        <input type="email" name="email" placeholder="Seu e-mail" required/>
+        <button type="submit">Enviar link</button>
+    </form>
+    <a href="/usuarios/login" class="voltar">← Voltar para o login</a>
+</div>
+</body>
+</html>l>

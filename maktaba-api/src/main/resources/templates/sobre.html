@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Conheça o Maktaba</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold">📚 Maktaba</a>
+    <div>
+        <a href="/usuarios/login" class="btn btn-outline-light btn-sm me-2">Entrar</a>
+        <a href="/usuarios/cadastro" class="btn btn-primary btn-sm">Cadastrar</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="bg-dark text-white text-center py-5">
+    <h1 class="display-4 fw-bold">📚 Maktaba</h1>
+    <p class="lead text-secondary">Sua plataforma de assinatura de livros mensais</p>
+    <a href="/usuarios/cadastro" class="btn btn-primary btn-lg me-2">Começar agora</a>
+    <a href="/livros/catalogo" class="btn btn-outline-light btn-lg">Ver catálogo</a>
+</div>
+
+<!-- Benefícios -->
+<div class="container py-5">
+    <h2 class="text-center mb-5">Por que assinar o Maktaba?</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h1>📦</h1>
+                    <h5 class="card-title mt-2">Livros todo mês</h5>
+                    <p class="card-text text-muted">Receba livros selecionados direto na sua casa todo mês, sem precisar sair.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h1>🎯</h1>
+                    <h5 class="card-title mt-2">Curadoria personalizada</h5>
+                    <p class="card-text text-muted">Livros escolhidos de acordo com seus interesses literários e preferências.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h1>💰</h1>
+                    <h5 class="card-title mt-2">Preço acessível</h5>
+                    <p class="card-text text-muted">Planos a partir de R$19,90 por mês. Cancele quando quiser, sem fidelidade.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h1>📖</h1>
+                    <h5 class="card-title mt-2">Catálogo diverso</h5>
+                    <p class="card-text text-muted">Fantasia, romance, distopia, literatura brasileira e muito mais.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h1>⏸️</h1>
+                    <h5 class="card-title mt-2">Pause quando quiser</h5>
+                    <p class="card-text text-muted">Ficou sem tempo? Pause sua assinatura e retome quando quiser.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <div class="card-body">
+                    <h1>🔒</h1>
+                    <h5 class="card-title mt-2">Seguro e confiável</h5>
+                    <p class="card-text text-muted">Seus dados protegidos com criptografia de ponta a ponta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Planos -->
+<div class="bg-white py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Nossos Planos</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-3 text-center">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5>📗 Básico</h5>
+                        <h3 class="text-primary">R$19,90</h3>
+                        <p class="text-muted">1 livro/mês</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="card shadow border-primary">
+                    <div class="card-header bg-primary text-white">Mais Popular</div>
+                    <div class="card-body">
+                        <h5>📘 Standard</h5>
+                        <h3 class="text-primary">R$34,90</h3>
+                        <p class="text-muted">2 livros/mês</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h5>📕 Premium</h5>
+                        <h3 class="text-primary">R$49,90</h3>
+                        <p class="text-muted">4 livros/mês</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/usuarios/cadastro" class="btn btn-primary btn-lg">Assinar agora</a>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0 text-muted">© 2026 Maktaba — Todos os direitos reservados</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

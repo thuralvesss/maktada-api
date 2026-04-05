@@ -22,9 +22,12 @@ public class SecurityConfig {
                                 "/usuarios/registrar",
                                 "/usuarios/login",
                                 "/livros/catalogo",
-                                "/livros/admin/**",
+                                "/recuperar-senha",
+                                "/recuperar-senha/**",
+                                "/sobre",
                                 "/"
                         ).permitAll()
+                        .requestMatchers("/livros/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

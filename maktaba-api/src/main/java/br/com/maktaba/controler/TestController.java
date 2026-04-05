@@ -1,4 +1,4 @@
-package br.com.maktaba.controller;
+package br.com.maktaba.controler;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +14,9 @@ public class TestController {
     public String ping() {
         return "OK";
     }
+
+    @GetMapping("/sobre")
+    public String sobre() { return "sobre"; }
 
 }
 

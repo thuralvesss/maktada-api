@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +30,7 @@ public class Usuario {
 
     private String senhaHash;
 
-    private Integer idade;
+    private LocalDate dataNascimento;
 
     @Column(columnDefinition = "TEXT")
     private String interessesLiterarios;
