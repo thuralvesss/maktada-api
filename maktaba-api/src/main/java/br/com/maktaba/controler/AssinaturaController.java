@@ -31,14 +31,23 @@ public class AssinaturaController {
     }
 
     @PostMapping("/assinar")
-    public String assinar(@RequestParam String plano,
-                          @AuthenticationPrincipal UserDetails userDetails,
-                          Model model) {
+    public String assinar(@RequestParam String plano) {
+        return "redirect:/assinatura/contrato?plano=" + plano;
+    }
+
+    @GetMapping("/contrato")
+    public String contrato(@RequestParam String plano, Model model) {
+        model.addAttribute("plano", plano);
+        return "contrato";
+    }
+
+    @PostMapping("/confirmar")
+    public String confirmar(@RequestParam String plano,
+                            @AuthenticationPrincipal UserDetails userDetails) {
 
         Usuario usuario = usuarioRepository.findByUsername(userDetails.getUsername())
                 .orElseThrow();
 
-        // Verifica se já tem assinatura
         assinaturaRepository.findByUsuarioId(usuario.getId()).ifPresent(a -> {
             assinaturaRepository.delete(a);
         });

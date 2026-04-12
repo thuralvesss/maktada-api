@@ -40,9 +40,17 @@
             <div class="row py-2">
                 <div class="col text-muted">Interesses</div>
                 <div class="col text-end fw-bold" th:text="${usuario.interessesLiterarios ?: 'Não informado'}"></div>
+                <div class="row py-2">
+                    <div class="col text-muted">Interesses</div>
+                    <div class="col text-end">
+                        <span th:text="${usuario.interessesLiterarios ?: 'Não informado'}"></span>
+                        <br/>
+                        <a href="/perfil/generos" class="btn btn-outline-primary btn-sm mt-1">✏️ Editar Gêneros</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+
 
     <div class="card shadow mb-4">
         <div class="card-header fw-bold">Minha Assinatura</div>

@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/perfil")
@@ -33,5 +35,46 @@ public class PerfilController {
                 .ifPresent(a -> model.addAttribute("assinatura", a));
 
         return "perfil";
+    }
+
+    @GetMapping("/generos")
+    public String generos(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        Usuario usuario = usuarioRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow();
+
+        List<String> todosGeneros = List.of(
+                "Fantasia", "Romance", "Distopia", "Literatura Brasileira",
+                "Terror", "Aventura", "Ficção Científica", "Mistério",
+                "Biografia", "História", "Autoajuda", "Policial"
+        );
+
+        List<String> generosEscolhidos = new ArrayList<>();
+        if (usuario.getInteressesLiterarios() != null && !usuario.getInteressesLiterarios().isEmpty()) {
+            generosEscolhidos = new ArrayList<>(List.of(usuario.getInteressesLiterarios().split(",")));
+        }
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("todosGeneros", todosGeneros);
+        model.addAttribute("generosEscolhidos", generosEscolhidos);
+        return "generos";
+    }
+
+    @PostMapping("/generos")
+    public String salvarGeneros(@AuthenticationPrincipal UserDetails userDetails,
+                                @RequestParam(required = false) List<String> generos,
+                                Model model) {
+
+        if (generos == null || generos.isEmpty() || generos.size() > 8) {
+            model.addAttribute("erro", "Escolha entre 1 e 8 gêneros literários.");
+            return "redirect:/perfil/generos";
+        }
+
+        Usuario usuario = usuarioRepository.findByUsername(userDetails.getUsername())
+                .orElseThrow();
+
+        usuario.setInteressesLiterarios(String.join(",", generos));
+        usuarioRepository.save(usuario);
+
+        return "redirect:/perfil";
     }
 }
